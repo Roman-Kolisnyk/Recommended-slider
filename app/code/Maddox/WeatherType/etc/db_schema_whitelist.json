@@ -1,0 +1,17 @@
+{
+    "maddox_weather_type": {
+        "column": {
+            "entity_id": true,
+            "label": true,
+            "minimum_temperature_value": true,
+            "maximum_temperature_value": true
+        },
+        "index": {
+            "MADDOX_WEATHER_TYPE_ENTITY_ID_LABEL": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MADDOX_WEATHER_TYPE_LABEL_CONSTRAINT": true
+        }
+    }
+}

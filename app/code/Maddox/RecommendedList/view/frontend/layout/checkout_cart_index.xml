@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+                <referenceContainer name="with-items">
+                    <block class="Maddox\RecommendedList\Block\Slider" name="checkout.cart.crosssell" as="slider-by-weather" after="-">
+                        <arguments>
+                            <argument name="page_name" xsi:type="string">cart</argument>
+                        </arguments>
+                        <block class="Magento\Checkout\Block\Cart\Crosssell" name="crosssell-origin" template="Magento_Catalog::product/list/items.phtml" after="-" ifconfig="checkout/cart/crosssell_enabled">
+                            <arguments>
+                                <argument name="type" xsi:type="string">crosssell</argument>
+                                <argument name="view_model" xsi:type="object">Magento\Catalog\ViewModel\Product\Listing\PreparePostData</argument>
+                            </arguments>
+                            <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="crosssell.product.addto" as="addto">
+                                <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+                                       name="crosssell.product.addto.compare" as="compare"
+                                       template="Magento_Catalog::product/list/addto/compare.phtml"/>
+                            </block>
+                        </block>
+                    </block>
+                </referenceContainer>
+        </referenceContainer>
+    </body>
+</page>

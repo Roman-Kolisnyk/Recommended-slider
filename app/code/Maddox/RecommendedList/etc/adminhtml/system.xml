@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="slider" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Slider</label>
+            <tab>maddox</tab>
+            <resource>Maddox_RecommendedList::recommended_slider_by_weather</resource>
+            <group id="slider_options" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Slider options</label>
+                <field id="enabled_on_cart" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable on cart page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enabled_on_checkout" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable on checkout page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="slider_title" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slider title</label>
+                    <validate>required-entry letters-with-basic-punc</validate>
+                </field>
+                <field id="items_qty" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Items quantity</label>
+                    <validate>required-entry integer no-whitespace</validate>
+                    <comment>This field is define how mush items will be displayed in the slider</comment>
+                </field>
+                <field id="is_dots_enabled" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable dots</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="is_infinite_enabled" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable infinite</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                    <comment>Infinite loop sliding</comment>
+                </field>
+                <field id="slides_to_show" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slides to show</label>
+                    <validate>required-entry integer no-whitespace</validate>
+                    <comment>Number of slides to show</comment>
+                </field>
+                <field id="slides_to_scroll" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slides to scroll</label>
+                    <validate>required-entry integer no-whitespace</validate>
+                    <comment>Number of slides to scroll</comment>
+                </field>
+                <field id="is_autoplay_enabled" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable autoplay</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="autoplay_speed" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Autoplay speed (milliseconds)</label>
+                    <validate>integer no-whitespace</validate>
+                    <depends>
+                        <field id="is_autoplay_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="slider_speed" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slider speed (milliseconds)</label>
+                    <validate>required-entry integer no-whitespace</validate>
+                    <comment>Slide/Fade animation speed</comment>
+                </field>
+                <field id="is_pause_on_hover_enabled" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable pause on hover</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                    <comment>Pause Autoplay On Hover</comment>
+                </field>
+                <field id="is_geo_ip_enabled" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable GeoIp</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                    <comment>Enable searching customer location by IP address (for guests or customers without address information)</comment>
+                </field>
+                <field id="geo_ip_base_url" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>GeoIp Base URL</label>
+                    <validate>required-entry validate-url</validate>
+                    <depends>
+                        <field id="is_geo_ip_enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

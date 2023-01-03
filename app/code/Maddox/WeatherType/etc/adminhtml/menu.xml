@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Maddox_WeatherType::forecast_api"
+             title="Forecast Api"
+             translate="title"
+             module="Maddox_WeatherType"
+             sortOrder="20"
+             action="adminhtml/system_config/edit/section/forecast_api"
+             parent="Maddox_Base::configuration"
+             resource="Maddox_WeatherType::forecast_api"/>
+        <add id="Maddox_WeatherType::weather_type"
+             title="Weather Types"
+             translate="title"
+             module="Maddox_WeatherType"
+             sortOrder="20"
+             action="maddox/weather_type/index"
+             parent="Maddox_Base::maddox_base"
+             resource="Maddox_WeatherType::weather_type"/>
+    </menu>
+</config>

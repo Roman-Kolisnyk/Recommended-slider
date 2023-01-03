@@ -1,0 +1,83 @@
+<p class="slider-title" data-bind="i18n: sliderTitle"></p>
+<div class="slider-items">
+    <!-- ko foreach: { data: getItems(), as: 'item' } -->
+        <div class="product-item">
+            <div class="product-item-info">
+                <div class="general-info-wrapper">
+                    <a class="product-item-photo" data-bind="attr: {href: item.product_url}">
+                        <span class="product-image-wrapper">
+                            <img class="product-image-photo" data-bind="attr: {src: item.image_url, alt: item.url_key}"/>
+                        </span>
+                    </a>
+                    <div class="product-item-details">
+                        <strong class="product-item-name">
+                            <a data-bind="attr: {title: item.name, href: item.product_url}, text: item.name" class="product-item-link"></a>
+                        </strong>
+                        <p class="product-item-sku" data-bind="text: item.sku"></p>
+                        <p class="product-item-price" data-bind="text: $parent.getFormattedPrice(item.final_price)"></p>
+                    </div>
+                </div>
+                <!-- ko if: item.product_options_html -->
+                    <div class="product-options" data-bind="html: item.product_options_html"></div>
+                <!-- /ko -->
+                <div class="product-item-inner">
+                    <div class="product-item-actions">
+                        <div class="actions-secondary" data-role="add-to-links">
+                            <!-- ko if: $parent.isAllowWishlist -->
+                                <a href="#" class="action towishlist" data-action="add-to-wishlist" role="button" data-bind="
+                                        attr: {
+                                            'data-post': item.to_wishlist_action_data,
+                                            title: $t('Add to Wish List')
+                                        }"
+                                >
+                                    <span data-bind="text: $t('Add to Wish List')"></span>
+                                </a>
+                            <!-- /ko -->
+                        </div>
+                        <div class="actions-primary">
+                            <!-- ko if: item.is_saleable -->
+                                <form data-role="tocart-form" method="post" data-bind="
+                                    attr: {
+                                        'data-product-sku': item.sku,
+                                        action: item.to_cart_action_data.action
+                                    }"
+                                >
+                                    <input type="hidden" name="product" data-bind="attr: {value: item.to_cart_action_data.product}">
+                                    <input type="hidden" name="uenc" data-bind="attr: {value: item.to_cart_action_data.uenc}">
+                                    <button type="submit"
+                                            class="action tocart primary"
+                                            data-bind="attr: {title: $t('Add to Cart')}">
+                                        <span data-bind="text: $t('Add to Cart')"></span>
+                                    </button>
+                                    <input class="swatch-input super-attribute-select" name="super_attribute[142]" type="text" data-bind="attr: {value: item.size}" data-selector="super_attribute[142]" data-validate="{required: true}" aria-required="true" aria-invalid="false" data-attr-name="size">
+                                    <input class="swatch-input super-attribute-select" name="super_attribute[93]" type="text" data-bind="attr: {value: item.color}" data-selector="super_attribute[93]" data-validate="{required: true}" aria-required="true" aria-invalid="false" data-attr-name="color">
+                                </form>
+                            <!-- /ko -->
+                            <!-- ko ifnot: item.is_saleable -->
+                                <!-- ko if: item.is_available -->
+                                    <div class="stock available"><span data-bind="text: $t('In stock')"></span></div>
+                                <!-- /ko -->
+                                <!-- ko ifnot: item.is_available -->
+                                    <div class="stock unavailable"><span data-bind="text: $t('Out of stock')"></span></div>
+                                <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                        <div class="actions-secondary" data-role="add-to-links">
+                            <!-- ko if: $parent.addToCompareUrl -->
+                                <a href="#" class="action tocompare" role="button" data-bind="
+                                    attr: {
+                                        'data-post': item.to_compare_action_data,
+                                        title: $t('Add to Compare')
+                                    }"
+                                >
+                                    <span data-bind="text: $t('Add to Compare')"></span>
+                                </a>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- /ko -->
+</div>
+<div data-bind="afterRender: slickInit"></div>

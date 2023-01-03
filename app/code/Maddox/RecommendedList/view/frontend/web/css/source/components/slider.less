@@ -1,0 +1,109 @@
+// Colors
+@slider-border-color: #F0F0F0;
+@slider-shadow-on-hover-color: #E8E8E8;
+@slider-shadow-without-hover-color: #F0F0F0;
+
+.checkout-cart-index {
+    .slider-title {
+        margin-top: 50px;
+    }
+}
+
+.checkout-cart-index, .checkout-index-index {
+    .recommended-by-weather {
+        width: 75%;
+        float: left;
+
+        .slider-title {
+            font-weight: 300;
+            font-size: 40px;
+        }
+
+        .slick-slide {
+            margin: 0 8px 8px;
+        }
+
+        .slider-items {
+            .slick-prev, .slick-next {
+                top: 42%;
+            }
+
+            .product-item {
+                padding: 10px;
+                pointer-events: none;
+
+                &:hover {
+                    border: 3px solid @slider-border-color;
+                    box-shadow: 8px 8px 8px @slider-shadow-on-hover-color;
+                    pointer-events: auto;
+
+                    .product-item-info {
+                        .general-info-wrapper {
+                            box-shadow: 0 0 0;
+                        }
+
+                        .product-item-inner, .product-options {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                .product-item-info {
+                    width: 100%;
+                    text-align: center;
+
+                    .general-info-wrapper {
+                        padding-bottom: 10px;
+                        box-shadow: 8px 8px 8px @slider-shadow-without-hover-color;
+                        pointer-events: auto;
+
+                        .product-image-wrapper {
+                            padding-bottom: 124%;
+
+                            .product-image-photo {
+                                display: inline;
+                                position: relative;
+                            }
+                        }
+
+                        .product-item-name, .product-item-sku, .product-item-price {
+                            margin-bottom: 0;
+                        }
+
+                        .product-item-sku {
+                            margin-bottom: 5px;
+                        }
+
+                        .product-item-price {
+                            font-weight: bold;
+                        }
+                    }
+
+                    .product-item-inner {
+                        margin-top: 10px;
+                    }
+
+                    .product-item-inner, .product-options {
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: visibility 0s, opacity 0.5s linear;
+                        pointer-events: auto;
+
+                        .product-item-actions {
+                            text-align: center;
+
+                            .actions-primary {
+                                margin: 0 20px 0 20px;
+
+                                .tocart {
+                                    border-radius: 13px
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

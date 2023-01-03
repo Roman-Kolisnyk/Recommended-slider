@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Maddox\RecommendedList\Block\Slider" name="checkout.crosssell" as="slider-by-weather" after="-" ifconfig="slider/slider_options/enabled_on_checkout">
+                <arguments>
+                    <argument name="page_name" xsi:type="string">checkout</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

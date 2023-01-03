@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Maddox\RecommendedList\Model\ProductsByWeather\Api">
+        <arguments>
+            <argument name="logger" xsi:type="object">Maddox\RecommendedList\Model\Logger\VirtualLogger</argument>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Maddox\RecommendedList\Model\Services\GeoIp\Client">
+        <arguments>
+            <argument name="logger" xsi:type="object">Maddox\RecommendedList\Model\Logger\VirtualLogger</argument>
+        </arguments>
+    </type>
+</config>

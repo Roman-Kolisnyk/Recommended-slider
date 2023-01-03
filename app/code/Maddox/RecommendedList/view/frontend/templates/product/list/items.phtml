@@ -1,0 +1,48 @@
+<?php
+/**
+ * Recommended products template
+ * @var $block \Maddox\RecommendedList\Block\Slider
+ */
+?>
+
+<?php
+$recommendedItems = $block->getItems();
+$recommendedItemsQty = count($recommendedItems);
+?>
+<?php if ($recommendedItemsQty): ?>
+<div id="recommended-by-weather" class="recommended-by-weather" data-bind="scope: 'recommended-products'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#recommended-by-weather": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "recommended-products": {
+                        "component": "Maddox_RecommendedList/js/slider",
+                        "config": {
+                            <?php if ($sliderTitle = $block->getSliderTitle()): ?>
+                                "sliderTitle": "<?= $sliderTitle ?>",
+                            <?php endif; ?>
+                            "sliderOptions": <?= \Zend_Json::encode($block->getSliderOptions()) ?>,
+                            "itemsData": <?= \Zend_Json::encode($recommendedItems) ?>,
+                            "isAllowWishlist": <?= $block->isAllowWishlist() ?>,
+                            "addToCompareUrl": "<?= $block->getAddToCompareUrl() ?>"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script type="text/x-magento-init">
+    {
+        "#recommended-by-weather": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>
+<?php else: ?>
+    <?= $block->getChildHtml('crosssell-origin') ?>
+<?php endif; ?>

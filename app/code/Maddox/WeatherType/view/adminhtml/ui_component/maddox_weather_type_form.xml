@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">maddox_weather_type_form.maddox_weather_type_form_data_source</item>
+            <item name="deps" xsi:type="string">maddox_weather_type_form.maddox_weather_type_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Weather Types</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">maddox_weather_type_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="reset">
+                <class>reset</class>
+                <label translate="true">Reset</label>
+            </button>
+            <button name="delete" class="Maddox\WeatherType\Ui\Component\Control\WeatherType\DeleteButton"/>
+            <button name="save" class="Maddox\WeatherType\Ui\Component\Control\WeatherType\SaveButton"/>
+        </buttons>
+    </settings>
+    <dataSource name="maddox_weather_type_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider class="Maddox\WeatherType\Ui\DataProvider\WeatherType\EditDataProvider" name="maddox_weather_type_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">General</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <dataScope>general</dataScope>
+        </settings>
+        <field name="label" formElement="input" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <label translate="true">Weather Type Label</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+                    <rule name="no-whitespace" xsi:type="boolean">true</rule>
+                    <rule name="letters-only" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="minimum_temperature_value" formElement="input" sortOrder="20">
+            <settings>
+                <dataType>number</dataType>
+                <visible>true</visible>
+                <label translate="true">Minimum Temperature (°C)</label>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+                    <rule name="no-whitespace" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="maximum_temperature_value" formElement="input" sortOrder="30">
+            <settings>
+                <dataType>number</dataType>
+                <visible>true</visible>
+                <label translate="true">Maximum Temperature (°C)</label>
+                <validation>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+                    <rule name="no-whitespace" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>

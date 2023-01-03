@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <forecast_api>
+            <forecast_auth>
+                <base_url>http://api.openweathermap.org/data/2.5/weather</base_url>
+                <api_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <error_message>Bad response from the Forecast API. Please, try again or contact the Administrator.</error_message>
+            </forecast_auth>
+        </forecast_api>
+    </default>
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <slider>
+            <slider_options>
+                <enabled_on_cart>1</enabled_on_cart>
+                <enabled_on_checkout>0</enabled_on_checkout>
+                <slider_title>Special for you</slider_title>
+                <items_qty>4</items_qty>
+                <is_dots_enabled>1</is_dots_enabled>
+                <is_infinite_enabled>1</is_infinite_enabled>
+                <slides_to_show>3</slides_to_show>
+                <slides_to_scroll>3</slides_to_scroll>
+                <is_autoplay_enabled>1</is_autoplay_enabled>
+                <autoplay_speed>3000</autoplay_speed>
+                <slider_speed>1000</slider_speed>
+                <is_pause_on_hover_enabled>1</is_pause_on_hover_enabled>
+                <is_geo_ip_enabled>1</is_geo_ip_enabled>
+                <geo_ip_base_url>http://ip-api.com/json/</geo_ip_base_url>
+            </slider_options>
+        </slider>
+    </default>
+</config>

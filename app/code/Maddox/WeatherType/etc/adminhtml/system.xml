@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="forecast_api" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Forecast API</label>
+            <tab>maddox</tab>
+            <resource>Maddox_WeatherType::forecast_api</resource>
+            <group id="forecast_auth" translate="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Forecast Authentication</label>
+                <field id="base_url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Base URL</label>
+                    <validate>required-entry no-whitespace validate-url</validate>
+                </field>
+                <field id="api_key" translate="label" type='obscure' sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Api key</label>
+                    <validate>required-entry no-whitespace alphanumeric</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="error_message" translate="label" type='textarea' sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Error message</label>
+                    <validate>required-entry letters-with-basic-punc</validate>
+                    <comment>This error will be displayed if the Forecast API returns an invalid response.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
