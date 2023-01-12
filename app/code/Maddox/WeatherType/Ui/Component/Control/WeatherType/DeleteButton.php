@@ -13,12 +13,14 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
      */
     public function getButtonData(): array
     {
-        if ($this->getWeatherTypeId()) {
+        $currentWeatherTypeId = $this->getCurrentWeatherTypeId();
+
+        if ($currentWeatherTypeId) {
             return [
                 'id' => 'delete',
                 'label' => __('Delete'),
                 'on_click' => "deleteConfirm('" .__('Are you sure you want to delete this weather type?') ."', '"
-                    . $this->getUrl('*/*/delete', ['selected' => $this->getWeatherTypeId()]) . "', {data: {}})",
+                    . $this->getUrl('*/*/delete', ['selected' => $currentWeatherTypeId]) . "', {data: {}})",
                 'class' => 'delete',
                 'sort_order' => 10
             ];

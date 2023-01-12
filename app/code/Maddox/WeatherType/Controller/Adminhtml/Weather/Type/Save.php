@@ -35,8 +35,7 @@ class Save extends Action implements HttpPostActionInterface
     {
         $resultRedirect = $this->resultRedirectFactory->create();
         $request = $this->getRequest();
-        $requestData = $request->getPost()->toArray();
-        $generalInputsData = $requestData['general'];
+        $generalInputsData = $request->getParam('general');
 
         if (!$request->isPost() || empty($generalInputsData)) {
             $this->messageManager->addErrorMessage(__('Wrong request'));
@@ -52,9 +51,11 @@ class Save extends Action implements HttpPostActionInterface
             $weatherType = $this->weatherTypeFactory->create();
         }
 
-        $weatherType->setLabel($generalInputsData[WeatherTypeInterface::LABEL]);
-        $weatherType->setMinimumTemperatureValue((int) $generalInputsData[WeatherTypeInterface::MINIMUM_TEMPERATURE_VALUE]);
-        $weatherType->setMaximumTemperatureValue((int) $generalInputsData[WeatherTypeInterface::MAXIMUM_TEMPERATURE_VALUE]);
+        $weatherType->addData([
+            WeatherTypeInterface::LABEL => $generalInputsData[WeatherTypeInterface::LABEL],
+            WeatherTypeInterface::MINIMUM_TEMPERATURE_VALUE => $generalInputsData[WeatherTypeInterface::MINIMUM_TEMPERATURE_VALUE],
+            WeatherTypeInterface::MAXIMUM_TEMPERATURE_VALUE => $generalInputsData[WeatherTypeInterface::MAXIMUM_TEMPERATURE_VALUE]
+        ]);
 
         try {
             $this->weatherTypeRepository->save($weatherType);

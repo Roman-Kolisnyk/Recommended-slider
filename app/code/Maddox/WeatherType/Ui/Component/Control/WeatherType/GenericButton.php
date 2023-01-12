@@ -34,7 +34,7 @@ class GenericButton
     /**
      * @return string|null
      */
-    public function getWeatherTypeId(): ?string
+    public function getCurrentWeatherTypeId(): ?string
     {
         $weatherTypeId = $this->request->getParam('entity_id');
 
@@ -48,6 +48,6 @@ class GenericButton
             $weatherType = null;
         }
 
-        return $weatherType->getEntityId();
+        return $weatherType?->getEntityId();
     }
 }
