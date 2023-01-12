@@ -1,0 +1,21 @@
+{
+    "name": "maddox/weather-type-graphql",
+    "description": "Maddox WeatherType GraphQL",
+    "require": {
+        "php": ">=8.1",
+        "ext-dom": "*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Maddox\\WeatherTypeGraphQl\\": ""
+        }
+    }
+}

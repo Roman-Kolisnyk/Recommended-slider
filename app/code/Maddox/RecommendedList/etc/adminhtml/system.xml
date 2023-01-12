@@ -81,6 +81,12 @@
                         <field id="is_geo_ip_enabled">1</field>
                     </depends>
                 </field>
+                <field id="request_products_with_graphql" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Request products with GraphQL</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                    <comment>Requesting products to the slider with the help of the GraphQL API. It can improve the sleder's loading speed.</comment>
+                </field>
             </group>
         </section>
     </system>

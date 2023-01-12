@@ -1,0 +1,172 @@
+type Query {
+    weatherTypes: [WeatherType] @doc(description: "Get all exists weather types") @resolver(class: "Maddox\\WeatherTypeGraphQl\\Model\\Resolver\\GetWeatherTypes")
+    currentCityTemperature (cityName: String!): CityTemperatureOutput @doc(description: "Get the current temperature degree in provided city") @resolver(class: "Maddox\\WeatherTypeGraphQl\\Model\\Resolver\\GetCityTemperature")
+    forecast(cityName: String!): ForecastOutput @doc(description: "Get the current forecast information in provided city") @resolver(class: "Maddox\\WeatherTypeGraphQl\\Model\\Resolver\\GetForecast")
+    productListByCityWeather(input: productListByCityWeatherInput!): ProductListOutput @resolver(class: "Maddox\\WeatherTypeGraphQl\\Model\\Resolver\\GetProductListByCityWeather")
+}
+
+type Mutation {
+    createWeatherType(input: CreateWeatherTypeInput): CreateWeatherTypeOutput @doc(description: "Create a new weather type") @resolver(class: "Maddox\\WeatherTypeGraphQl\\Model\\Resolver\\CreateWeatherType")
+    setWeatherType(input: SetWeatherTypeInput): SetWeatherTypeOutput @doc(description: "Set a weather type attribute to a product") @resolver(class: "Maddox\\WeatherTypeGraphQl\\Model\\Resolver\\SetWeatherType")
+}
+
+type SetWeatherTypeOutput {
+    success: Boolean!
+    message: [String]
+}
+
+input SetWeatherTypeInput {
+    product_ids: [Int]
+    product_skus: [String]
+    weather_types: [String!]
+}
+
+input productListByCityWeatherInput {
+    cityName: String!
+    pageSize: Int!
+}
+
+type ProductListOutput {
+    success: Boolean
+    products: [ProductData]
+    message: String
+}
+
+type ProductData {
+    entity_id: String
+    attribute_set_id: String
+    type_id: String
+    sku: String
+    has_options: String
+    required_options: String
+    created_at: String
+    updated_at: String
+    weather_type: String
+    description:  String
+    material: String
+    pattern: String
+    climate: String
+    status: String
+    visibility: String
+    quantity_and_stock_status: String
+    tax_class_id: String
+    eco_collection: String
+    performance_fabric: String
+    erin_recommends: String
+    new: String
+    sale: String
+    name: String
+    image: String
+    small_image: String
+    thumbnail: String
+    options_container: String
+    msrp_display_actual_price_type: String
+    url_key: String
+    gift_message_available: String
+    store_id: Int
+    request_path: String
+    salable: Boolean
+    final_price: Float
+    image_url: String
+    product_url: String
+    is_available: Boolean
+    is_saleable: Boolean
+}
+
+type ForecastOutput {
+    success: Boolean
+    response: ForecastResponse
+    message: String
+}
+
+type ForecastResponse {
+    coord: ForecastCoordinates
+    weather: [ForecastWeatherResponse]
+    base: String
+    main: ForecastMainInfo
+    visibility: Int
+    wind: ForecastWindInfo
+    clouds: ForecastClouds
+    dt: Int
+    sys: ForecastSystemParams
+    timezone: Int
+    id: Int
+    name: String
+    cod: Int
+}
+
+type ForecastCoordinates {
+    lon: Float
+    lat: Float
+}
+
+type ForecastWeatherResponse {
+    id: Int
+    main: String
+    description: String
+    icon: String
+}
+
+type ForecastMainInfo {
+    temp: Float
+    feels_like: Float
+    temp_min: Float
+    temp_max: Float
+    pressure: Int
+    humidity: Int
+    sea_level: Int
+    grnd_level: Int
+}
+
+type ForecastSystemParams {
+    type: Int
+    id: Int
+    country: String
+    sunrise: Int
+    sunset: Int
+}
+
+type ForecastClouds {
+    all: Int
+}
+
+type ForecastWindInfo {
+    speed: Float
+    deg: Int
+    gust: Float
+}
+
+type CityTemperatureOutput {
+    temperature: Int
+    errorMessage: String
+}
+
+type WeatherType {
+    id: Int
+    label: String
+    minimum_temperature_value: Int
+    maximum_temperature_value: Int
+}
+
+input CreateWeatherTypeInput {
+    label: String!
+    minimum_temperature_value: Int!
+    maximum_temperature_value: Int!
+}
+
+type CreateWeatherTypeOutput {
+    created: Boolean!
+    errorMessage: String
+}
+
+interface ProductInterface {
+    weather_type: String @doc(description: "Add the weather_type field to a product response") @resolver(class: "Maddox\\WeatherTypeGraphQl\\Model\\Resolver\\AddWeatherTypeToProductResponse")
+}
+
+input ProductAttributeFilterInput {
+    weather_type: FilterEqualTypeInput
+}
+
+input ProductAttributeSortInput {
+    weather_type: SortEnum
+}

@@ -33,9 +33,11 @@ class WeatherTypeRepository implements \Maddox\WeatherType\Api\WeatherTypeReposi
         } catch (\Exception $e) {
             throw new LocalizedException(
                 __(
-                    "Couldn'\t save the weather type with id: %1. %2",
-                    $weatherType->getEntityId(),
-                    $e->getMessage()
+                    "Couldn'\t save the weather type with name: %name. %exceptionMessage",
+                    [
+                        'name' => $weatherType->getLabel(),
+                        'exceptionMessage' => $e->getMessage()
+                    ]
                 )
             );
         }
@@ -88,8 +90,29 @@ class WeatherTypeRepository implements \Maddox\WeatherType\Api\WeatherTypeReposi
             $this->weatherTypeResource->load($weatherType, $weatherTypeId, WeatherTypeInterface::ENTITY_ID);
         }
 
-        if (!$weatherType?->getEntityId()) {
+        if (!$weatherType?->getData('entity_id')) {
             throw new NoSuchEntityException(__("Couldn'\t find the weather type with id: #%1", $weatherTypeId));
+        }
+
+        return $weatherType;
+    }
+
+    /**
+     * @param string $weatherTypeName
+     * @return WeatherTypeInterface
+     * @throws NoSuchEntityException
+     */
+    public function getByName(string $weatherTypeName): WeatherTypeInterface
+    {
+        $weatherType = null;
+
+        if ($weatherTypeName) {
+            $weatherType = $this->weatherTypeFactory->create();
+            $this->weatherTypeResource->load($weatherType, $weatherTypeName, WeatherTypeInterface::LABEL);
+        }
+
+        if (!$weatherType?->getData('entity_id')) {
+            throw new NoSuchEntityException(__("Couldn'\t find the weather type with name: %1", $weatherTypeName));
         }
 
         return $weatherType;

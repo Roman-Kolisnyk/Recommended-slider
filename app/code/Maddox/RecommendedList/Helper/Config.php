@@ -133,6 +133,14 @@ class Config extends AbstractHelper
     }
 
     /**
+     * @return bool
+     */
+    public function isRequestProductsWithGraphql(): bool
+    {
+        return $this->getConfigFlag(self::XML_PATH_SLIDER_OPTIONS . 'request_products_with_graphql');
+    }
+
+    /**
      * @param string $configPath
      * @return mixed
      */
