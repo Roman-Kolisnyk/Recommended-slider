@@ -44,9 +44,9 @@ class WeatherType extends \Magento\Framework\Model\AbstractModel implements Weat
     }
 
     /**
-     * @return int
+     * @return int|string
      */
-    public function getMinimumTemperatureValue(): int
+    public function getMinimumTemperatureValue(): int|string
     {
         return $this->_getData(self::MINIMUM_TEMPERATURE_VALUE);
     }
@@ -61,9 +61,9 @@ class WeatherType extends \Magento\Framework\Model\AbstractModel implements Weat
     }
 
     /**
-     * @return int
+     * @return int|string
      */
-    public function getMaximumTemperatureValue(): int
+    public function getMaximumTemperatureValue(): int|string
     {
         return $this->_getData(self::MAXIMUM_TEMPERATURE_VALUE);
     }
