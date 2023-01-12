@@ -31,9 +31,9 @@ interface WeatherTypeInterface
     public function setLabel(string $label): WeatherTypeInterface;
 
     /**
-     * @return int
+     * @return int|string
      */
-    public function getMinimumTemperatureValue(): int;
+    public function getMinimumTemperatureValue(): int|string;
 
     /**
      * @param int $minimumTemperatureValue
@@ -42,9 +42,9 @@ interface WeatherTypeInterface
     public function setMinimumTemperatureValue(int $minimumTemperatureValue): WeatherTypeInterface;
 
     /**
-     * @return int
+     * @return int|string
      */
-    public function getMaximumTemperatureValue(): int;
+    public function getMaximumTemperatureValue(): int|string;
 
     /**
      * @param int $maximumTemperatureValue

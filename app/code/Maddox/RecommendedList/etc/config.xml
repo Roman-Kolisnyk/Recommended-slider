@@ -17,6 +17,7 @@
                 <is_pause_on_hover_enabled>1</is_pause_on_hover_enabled>
                 <is_geo_ip_enabled>1</is_geo_ip_enabled>
                 <geo_ip_base_url>http://ip-api.com/json/</geo_ip_base_url>
+                <request_products_with_graphql>1</request_products_with_graphql>
             </slider_options>
         </slider>
     </default>
